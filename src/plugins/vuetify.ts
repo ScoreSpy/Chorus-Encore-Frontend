@@ -12,15 +12,20 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
+
+
+
 export default createVuetify({
   theme: {
+    defaultTheme: 'chorus',
     themes: {
-      light: {
+      chorus: {
+        dark: true,
         colors: {
-          primary: '#1867C0',
-          secondary: '#5CBBF6',
-        },
-      },
+          background: '#2C3E50',
+          primary: '#FFD700'
+        }
+      }
     },
   },
 })
