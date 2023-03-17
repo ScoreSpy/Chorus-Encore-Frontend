@@ -43,13 +43,17 @@
         </v-col>
       </v-row>
     </v-app-bar>
+
+    <DefaultView />
   </v-app>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import DefaultView from './View.vue'
 
 export default defineComponent({
+  components: { DefaultView },
   data() {
     return {
 
