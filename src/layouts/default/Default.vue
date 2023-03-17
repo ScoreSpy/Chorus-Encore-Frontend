@@ -39,7 +39,7 @@
         </v-col>
 
         <v-col class="d-none d-md-block" xs="0" sm="0" md="3" lg="3" xl="3">
-          <v-btn variant="text" color="#FFD700">Advanced Search</v-btn>
+          <v-btn variant="text" color="#DA9E0E">Advanced Search</v-btn>
         </v-col>
       </v-row>
     </v-app-bar>
