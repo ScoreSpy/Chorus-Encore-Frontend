@@ -17,8 +17,46 @@
       </v-col>
     </v-row>
   </v-app-bar>
+
+  <v-row class="d-flex justify-center" style="margin-top: 4px">
+    <v-col class="d-flex align-center" cols="12" lg="8" md="10">
+      Latest Charts
+    </v-col>
+  </v-row>
+
+  <template v-for="(entry, index) in songs" :key="entry">
+    <SongItem :somevalue="index" />
+  </template>
+
+  <v-row class="d-flex justify-center" style="margin: 10px">
+    <v-col cols="12" lg="8" md="10" class="d-flex justify-center">
+      <v-btn color="primary" variant="text">
+        More Songs
+      </v-btn>
+
+    </v-col>
+  </v-row>
+
 </template>
 
-<script lang="ts" setup>
+<script lang="ts">
+import { defineComponent } from 'vue'
+import SongItem from '@/components/songItem.vue'
 
+export default defineComponent({
+  components: { SongItem },
+  data() {
+    return {
+      songs: [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,9,0]
+    }
+  },
+  mounted() {
+
+  },
+  methods: {
+    openUrl: function (url: string) {
+      window.open(url, '_blank')?.focus()
+    }
+  }
+})
 </script>
