@@ -18,9 +18,16 @@
     </v-row>
   </v-app-bar>
 
-  <v-row class="d-flex justify-center" style="margin-top: 4px">
-    <v-col class="d-flex align-center" cols="12" lg="8" md="10">
-      Latest Charts
+  <v-row class="d-flex justify-center">
+    <v-col class="d-flex align-center" cols="12" xl="6" md="10" :class="'grow-on-hover'">
+      <div class="d-flex align-items-center" style="width: 100%; justify-content: space-between; margin-top: 12px">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          Latest Charts
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; font-size:small; color: #ccc ">
+          <span style="color: rgb(var(--v-theme-primary))">123456</span> 	&nbsp;Charts
+        </div>
+      </div>
     </v-col>
   </v-row>
 
@@ -36,7 +43,6 @@
 
     </v-col>
   </v-row>
-
 </template>
 
 <script lang="ts">
