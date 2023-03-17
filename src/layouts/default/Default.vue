@@ -52,7 +52,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   data() {
     return {
-      count: 1
+
     }
   },
   mounted() {
@@ -60,7 +60,7 @@ export default defineComponent({
   },
   methods: {
     openUrl: function (url: string) {
-      window.open(url, '_blank')?.focus();
+      window.open(url, '_blank')?.focus()
     }
   }
 })
