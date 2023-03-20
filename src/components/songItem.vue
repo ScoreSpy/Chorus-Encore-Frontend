@@ -88,7 +88,7 @@ export default defineComponent({
     expandPanel: function () {
       const element = this.$refs.owo as HTMLElement
       if (element.style.maxHeight){
-        element.style.maxHeight = null
+        (element.style.maxHeight as string | null) = null
         this.contentHeight = false
       } else {
         element.style.maxHeight = element.scrollHeight + "px"
