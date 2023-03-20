@@ -23,6 +23,8 @@
     </v-system-bar>
 
     <DefaultView />
+
+    <v-footer absolute style="position: fixed; bottom: 10px;">NON FUNCTIONAL PREVIEW BUILD</v-footer>
   </v-app>
 </template>
 
