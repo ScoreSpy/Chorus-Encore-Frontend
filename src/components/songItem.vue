@@ -44,9 +44,9 @@
         </div>
 
         <v-btn block height="20px" color="#28343F" class="collapsible" @click="expandPanel">
-          <v-icon icon="mdi-chevron-down"></v-icon>
+          <v-icon :icon="contentHeight ? `mdi-chevron-up` : `mdi-chevron-down`"></v-icon>
         </v-btn>
-        <div class="content" :style="`maxHeight: ${contentHeight}`" ref="owo">
+        <div class="content" ref="owo">
           expansion panel content
         </div>
       </div>
@@ -66,7 +66,7 @@ export default defineComponent({
   },
   data() {
     return {
-      contentHeight: null,
+      contentHeight: false,
       icon: 'csc',
       title: 'Staff Credits',
       artist: 'Mario Kart Band',
@@ -88,13 +88,14 @@ export default defineComponent({
     expandPanel: function () {
       const element = this.$refs.owo as HTMLElement
       if (element.style.maxHeight){
-        element.style.maxHeight = null;
+        element.style.maxHeight = null
+        this.contentHeight = false
       } else {
-        element.style.maxHeight = element.scrollHeight + "px";
+        element.style.maxHeight = element.scrollHeight + "px"
+        this.contentHeight = true
       }
 
       element.classList.toggle('active')
-      console.log(element, this.contentHeight)
     }
   }
 })
@@ -149,7 +150,7 @@ export default defineComponent({
 
 .collapsible {
   background-color: #eee;
-  color: #444;
+  color: #6d6d6d;
   cursor: pointer;
   padding: 12px;
   width: 100%;
