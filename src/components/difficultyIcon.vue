@@ -1,15 +1,25 @@
 <template>
-  <div class="diff-image-container">
-    <div class="diff-image-container-EMHX" style="color: white">
-      <span :style="`color: ${diffLabels.E ? 'while' : 'grey'}`">E</span>
-      <span :style="`color: ${diffLabels.M ? 'while' : 'grey'}`">M</span>
-      <span :style="`color: ${diffLabels.H ? 'while' : 'grey'}`">H</span>
-      <span :style="`color: ${diffLabels.X ? 'while' : 'grey'}`">X</span>
-    </div>
-    <v-img style="margin-left: 10px;" width="30px" :src="getInstrumentsIcon(iconName!)"></v-img>
-    <div class="diff-image-container-text-dot" ></div>
-    <div class="diff-image-container-text" style="color: white"> {{ difficulty }} </div>
-  </div>
+
+  <v-tooltip location="bottom" content-class='custom-tooltip'>
+    <div>{{ iconName }}</div>
+    <div>Easy 1234 Notes</div>
+    <div>Medium 1234 Notes</div>
+    <div>Hard 1234 Notes</div>
+    <div>Expert 1234 Notes</div>
+    <template v-slot:activator="{ props }">
+      <div  v-bind="props" class="diff-image-container">
+        <div class="diff-image-container-EMHX" style="color: white">
+          <span :style="`color: ${diffLabels.E ? 'while' : 'grey'}`">E</span>
+          <span :style="`color: ${diffLabels.M ? 'while' : 'grey'}`">M</span>
+          <span :style="`color: ${diffLabels.H ? 'while' : 'grey'}`">H</span>
+          <span :style="`color: ${diffLabels.X ? 'while' : 'grey'}`">X</span>
+        </div>
+        <v-img style="margin-left: 10px;" width="30px" :src="getInstrumentsIcon(iconName!)"></v-img>
+        <div class="diff-image-container-text-dot" ></div>
+        <div class="diff-image-container-text" style="color: white"> {{ difficulty }} </div>
+      </div>
+    </template>
+  </v-tooltip>
 </template>
 
 <script lang="ts">

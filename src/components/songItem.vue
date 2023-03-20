@@ -6,6 +6,12 @@
         <div style="padding: 8px; padding-bottom: unset;">
           <div class="d-flex align-items-center" style="justify-content: space-between; padding-bottom: 5px">
             <div style="display: flex; align-items: center; justify-content: center; font-size:x-large;">
+              <v-tooltip location="top" content-class='custom-tooltip'>
+                <div>Chart has warnings, Expand dropdown to see more!</div>
+                <template v-slot:activator="{ props }">
+                  <v-icon  v-bind="props" icon="mdi-alert" style="margin-right: 4px" size="24px" color="amber"></v-icon>
+                </template>
+              </v-tooltip>
               {{title}} - {{artist}}
             </div>
 
@@ -47,7 +53,21 @@
           <v-icon :icon="contentHeight ? `mdi-chevron-up` : `mdi-chevron-down`"></v-icon>
         </v-btn>
         <div class="content" ref="owo">
-          expansion panel content
+            <div>will be like, alot more stuff here... configs, files, hashes, NPS, note counts, note issues, chart issues, upload info, google drive links yada yada yada </div>
+            <hr>
+            <v-alert density="compact" type="warning" title="Chart Issues Found">
+              <ul>
+                <li>Five Note Chord</li>
+                <li>Difficulty Forbidden Note</li>
+                <li>Three Note Drum Chord</li>
+                <li>Broken Note</li>
+                <li>Bad Sustain Gap</li>
+                <li>Baby Sustain</li>
+                <li>No Star Power</li>
+                <li>No DrumA ctivation Lanes</li>
+              </ul>
+            </v-alert>
+
         </div>
       </div>
 
@@ -149,6 +169,7 @@ export default defineComponent({
 }
 
 .collapsible {
+  border-radius: 0px;
   background-color: #eee;
   color: #6d6d6d;
   cursor: pointer;
