@@ -42,9 +42,13 @@
           </div>
 
         </div>
-        <v-btn block height="20px" color="#28343F">
+
+        <v-btn block height="20px" color="#28343F" class="collapsible" @click="expandPanel">
           <v-icon icon="mdi-chevron-down"></v-icon>
         </v-btn>
+        <div class="content" :style="`maxHeight: ${contentHeight}`" ref="owo">
+          expansion panel content
+        </div>
       </div>
 
     </v-col>
@@ -62,6 +66,7 @@ export default defineComponent({
   },
   data() {
     return {
+      contentHeight: null,
       icon: 'csc',
       title: 'Staff Credits',
       artist: 'Mario Kart Band',
@@ -79,6 +84,17 @@ export default defineComponent({
   methods: {
     getCharterIcon: function (icon: string) {
       return `/charterIcons/${icon}.png`
+    },
+    expandPanel: function () {
+      const element = this.$refs.owo as HTMLElement
+      if (element.style.maxHeight){
+        element.style.maxHeight = null;
+      } else {
+        element.style.maxHeight = element.scrollHeight + "px";
+      }
+
+      element.classList.toggle('active')
+      console.log(element, this.contentHeight)
     }
   }
 })
@@ -130,4 +146,37 @@ export default defineComponent({
 .grow-on-hover:hover {
   transform: scale(1.05);
 }
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+.content {
+  padding: 0 18px;
+  background-color: #1a2229;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
 </style>
