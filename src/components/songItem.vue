@@ -21,12 +21,13 @@
               {{source}}
             </div>
             <div style="display: flex; align-items: center; justify-content: center; font-size:small; color: #ccc ">
-              <v-img style="margin-left: 4px;" width="20px" :src="getInstrumentsIcon('bass')"></v-img>
-              <v-img style="margin-left: 4px" width="20px" :src="getInstrumentsIcon('drums')"></v-img>
-              <v-img style="margin-left: 4px" width="20px" :src="getInstrumentsIcon('ghl_bass')"></v-img>
-              <v-img style="margin-left: 4px" width="20px" :src="getInstrumentsIcon('ghl_guitar')"></v-img>
-              <v-img style="margin-left: 4px" width="20px" :src="getInstrumentsIcon('guitar')"></v-img>
-              <v-img style="margin-left: 4px" width="20px" :src="getInstrumentsIcon('keys')"></v-img>
+
+              <difficultyIcon :difficulty-labels="15" :difficulty="5" icon-name="bass" />
+              <difficultyIcon :difficulty-labels="15" :difficulty="5" icon-name="drums" />
+              <difficultyIcon :difficulty-labels="15" :difficulty="5" icon-name="ghl_bass" />
+              <difficultyIcon :difficulty-labels="15" :difficulty="5" icon-name="ghl_guitar" />
+              <difficultyIcon :difficulty-labels="15" :difficulty="5" icon-name="guitar" />
+              <difficultyIcon :difficulty-labels="15" :difficulty="5" icon-name="keys" />
 
             </div>
           </div>
@@ -36,7 +37,7 @@
               <v-btn variant="text" color="primary" style="padding: unset">Download {{charter}}'s chart</v-btn>
             </div>
             <div style="display: flex; align-items: center; justify-content: center; font-size:small; color: #ccc ">
-              {{date}} - {{checksum}}
+              {{checksum}} - {{date}}
             </div>
           </div>
 
@@ -52,8 +53,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import difficultyIcon from './difficultyIcon.vue'
 
 export default defineComponent({
+  components: { difficultyIcon },
   props: {
     somevalue: Number
   },
@@ -65,8 +68,8 @@ export default defineComponent({
       charter: '3-UP',
       source: 'Mario Kart 8 Original Soundtrack',
       download: 'click me',
-      date: '000-00-00',
-      checksum: '234597878345927893425',
+      date: '17/03/2023',
+      checksum: '8438E28C4B9635ABAAF3C50F9EE22FD6',
       notesPerSecond: '9001'
     }
   },
@@ -76,9 +79,6 @@ export default defineComponent({
   methods: {
     getCharterIcon: function (icon: string) {
       return `/charterIcons/${icon}.png`
-    },
-    getInstrumentsIcon: function (icon: string) {
-      return `/instruments/${icon}.png`
     }
   }
 })
