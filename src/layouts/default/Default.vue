@@ -15,8 +15,8 @@
         </v-col>
 
         <v-col xs="3" sm="3" md="3" lg="3" xl="3">
-          <div class="d-flex flex-row-reverse">
-            <v-btn color="white" variant="plain" icon="mdi-login" to="/login"></v-btn>
+          <div v-if="!store.isAuthenticated" class="d-flex flex-row-reverse">
+            <v-btn color="white" variant="plain" icon="mdi-login" @click="login"></v-btn>
           </div>
         </v-col>
       </v-row>
@@ -31,18 +31,33 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import DefaultView from './View.vue'
+import { useAppStore } from '@/store/app'
 
 export default defineComponent({
   components: { DefaultView },
   data() {
     return {
-
+      store: useAppStore(),
     }
   },
-  mounted() {
+  async mounted () {
+    const data = (await this.axios.get('/api/v1/user/ping')).data as {
+      isAuthenticated: boolean,
+      user: {
+        snowflake: string,
+        displayName: string,
+        userLevel: number
+      }
+    }
 
+    if (data.isAuthenticated) {
+      this.store.login(data.user)
+    }
   },
   methods: {
+    login: function () {
+      window.location.href = '/api/v1/login/discord'
+    },
     openUrl: function (url: string) {
       window.open(url, '_blank')?.focus()
     }
